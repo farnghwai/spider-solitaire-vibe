@@ -327,7 +327,7 @@ function isValidStack(stack) {
 
 function isValidDestination(card, column) {
   if (column.length === 0) {
-    return card.rank === "K";
+    return true;
   }
   const top = column[column.length - 1];
   if (!top.faceUp) return false;
