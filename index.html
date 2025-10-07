@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spider Solitaire</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top-bar">
+        <h1 class="logo">Spider Solitaire</h1>
+        <div class="status-bar">
+          <button class="stock-button" data-action="deal" aria-label="Deal new row">
+            <span class="stock-label">Deal</span>
+            <span class="stock-count" id="stockCount">0</span>
+          </button>
+          <span class="foundation-counter" id="foundationCount">0 / 8</span>
+        </div>
+      </header>
+
+      <main class="table">
+        <section class="tableau" id="tableau" aria-label="Tableau columns"></section>
+      </main>
+
+      <nav class="toolbar">
+        <button class="toolbar-button" data-action="settings">Settings</button>
+        <button class="toolbar-button" data-action="guide">Guide</button>
+        <button class="toolbar-button" data-action="new">New Game</button>
+        <button class="toolbar-button" data-action="undo" id="undoButton">Undo</button>
+      </nav>
+    </div>
+
+    <dialog class="modal" id="guideModal" aria-labelledby="guideTitle">
+      <form method="dialog">
+        <header>
+          <h2 id="guideTitle">How to Play</h2>
+        </header>
+        <article class="modal-body">
+          <p>
+            Build descending runs of cards inside the ten tableau columns. You may move only
+            face-up cards. Drag or tap a sequence that is in descending order and of the same suit
+            to move it to another column.
+          </p>
+          <ul>
+            <li>Only a King can be moved to an empty column.</li>
+            <li>
+              When you complete a run from King down to Ace of the same suit, it is cleared to the
+              foundations.
+            </li>
+            <li>
+              Deal a new row from the stock once every column holds at least one card. Each deal
+              adds one face-up card to every column.
+            </li>
+            <li>
+              Use Undo to step backwards through your moves. You can disable the undo feature from
+              Settings if you want an extra challenge.
+            </li>
+          </ul>
+        </article>
+        <footer class="modal-actions">
+          <button value="close">Close</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="settingsModal" aria-labelledby="settingsTitle">
+      <form method="dialog" id="settingsForm">
+        <header>
+          <h2 id="settingsTitle">Settings</h2>
+        </header>
+        <article class="modal-body settings-body">
+          <label class="toggle">
+            <input type="checkbox" id="toggleUndo" />
+            <span>Enable Undo</span>
+          </label>
+          <section class="about">
+            <h3>About</h3>
+            <p>
+              A lightweight Spider Solitaire built for GitHub Pages. Works best on modern browsers
+              and adapts to any screen.
+            </p>
+          </section>
+        </article>
+        <footer class="modal-actions">
+          <button value="close">Close</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
